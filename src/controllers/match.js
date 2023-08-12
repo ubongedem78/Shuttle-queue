@@ -44,21 +44,21 @@ const updateMatchDetails = async (req, res) => {
     params: { id: matchId },
     body: { players },
   } = req;
-};
 
-try {
-  const match = await Match.findOneAndUpdate(
-    { _id: matchId },
-    { players },
-    { new: true, runValidators: true }
-  );
-  if (!match) {
-    return res.status(404).json({ message: "Match not found" });
+  try {
+    const match = await Match.findOneAndUpdate(
+      { _id: matchId },
+      { players },
+      { new: true, runValidators: true }
+    );
+    if (!match) {
+      return res.status(404).json({ message: "Match not found" });
+    }
+    res.json({ match });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
-  res.json({ match });
-} catch (error) {
-  res.status(400).json({ message: error.message });
-}
+};
 
 //update scores
 const updateMatchScores = async (req, res) => {
