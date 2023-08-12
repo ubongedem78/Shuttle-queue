@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Shuttlequeue</title>
+  </head>
+  <body class="font-sans bg-gray-100 min-h-screen">
+    <header class="bg-gray-500 text-white py-10 text-center">
+      <h1 class="text-3xl">C</h1>
+    </header>
+    <main class="bg-white my-5 p-4 text-center rounded-md shadow-md">
+      <h2 class="text-xl font-semibold mb-3">Add Player</h2>
+      <form
+        id="add-player-form"
+        class="space-y-4"
+        action="/api/add-player"
+        method="POST"
+      >
+        <div>
+          <label for="game-mode" class="block font-semibold mb-1"
+            >Game Mode:</label
+          >
+          <select
+            id="game-mode"
+            class="bg-white border border-gray-300 px-3 py-2 rounded-md w-full"
+          >
+            <option value="singles">Singles</option>
+            <option value="doubles">Doubles</option>
+          </select>
+        </div>
+        <div id="player-inputs">
+          <!-- Placeholder for input fields based on game mode -->
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white hover:bg-blue-600 focus:outline-none px-4 py-2 rounded-md w-full"
+        >
+          Save
+        </button>
+      </form>
+    </main>
+    <footer
+      class="bg-gray-800 text-white text-xs text-center py-3 bottom-0 w-full absolute"
+    >
+      <p>&copy; Shuttlequeue</p>
+    </footer>
+    <script src="add-player.js"></script>
+  </body>
+</html>
