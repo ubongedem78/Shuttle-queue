@@ -8,5 +8,6 @@ const {
 } = require("../controllers/queue");
 
 router.route("/queue").get(getPlayerQueue).post(addPlayerToQueue);
+router.route("/queue/reorder").put(reorderQueue);
 
 module.exports = router;
