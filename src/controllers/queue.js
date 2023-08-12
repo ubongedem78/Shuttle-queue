@@ -9,16 +9,30 @@ const getPlayerQueue = async (req, res) => {
   }
 };
 
+// Add a player to the queue (singles)
 const addPlayerToQueue = async (req, res) => {
-  const player = new Player({
-    name: req.body.name,
-  });
-
   try {
+    const { name, gameMode } = req.body;
+    const player = new Player({ name, gameMode: "singles" }); // Set the game mode to "singles"
     const newPlayer = await player.save();
     res.status(201).json(newPlayer);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// Add a doubles pair to the queue (doubles)
+const addDoublesToQueue = async (req, res) => {
+  try {
+    const { player1, player2 } = req.body;
+    const doublesPair = new Player({
+      name: `${player1}/${player2}`,
+      gameMode: "doubles",
+    }); // Set the game mode to "doubles"
+    const newDoublesPair = await doublesPair.save();
+    res.status(201).json(newDoublesPair);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -71,5 +85,6 @@ const reorderQueue = async (req, res) => {
 module.exports = {
   getPlayerQueue,
   addPlayerToQueue,
+  addDoublesToQueue,
   reorderQueue,
 };

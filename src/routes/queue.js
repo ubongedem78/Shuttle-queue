@@ -5,9 +5,19 @@ const {
   getPlayerQueue,
   addPlayerToQueue,
   reorderQueue,
+  addDoublesToQueue,
 } = require("../controllers/queue");
 
-router.route("/queue").get(getPlayerQueue).post(addPlayerToQueue);
-router.route("/queue/reorder").put(reorderQueue);
+// Get the queue
+router.route("/").get(getPlayerQueue);
+
+// Add a player to the queue (singles)
+router.post("/add", addPlayerToQueue);
+
+// Add a doubles pair to the queue (doubles)
+router.post("/add-doubles", addDoublesToQueue);
+
+//reorder
+router.route("/reorder").put(reorderQueue);
 
 module.exports = router;

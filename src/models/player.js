@@ -8,13 +8,10 @@ const PlayerSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 15,
     },
-    consecutiveWins: {
-      type: Number,
-      default: 0,
-    },
-    position: {
-      type: Number,
-      default: 0,
+    gameMode: {
+      type: String,
+      enum: ["singles", "doubles"],
+      required: [true, "Please provide game mode (singles or doubles)"],
     },
   },
   { timestamps: true }

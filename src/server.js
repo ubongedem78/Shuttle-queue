@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const queueRoutes = require("./routes/queue");
 const matchRoutes = require("./routes/match");
 const playerRoutes = require("./routes/player");
+const gameRoutes = require("./routes/game");
 
 //middlewares
 app.use(express.static("public"));
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use("/api/v1/queue", queueRoutes);
 app.use("/api/v1/match", matchRoutes);
 app.use("/api/v1/player", playerRoutes);
+app.use("/api/v1/game", gameRoutes);
 
 const port = process.env.PORT || 3000;
 
