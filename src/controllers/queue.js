@@ -62,7 +62,7 @@ const reorderQueue = async (req, res) => {
       }
       await player.save();
     }
-    res.status(201).json({ message: "Queue reordered" });
+    res.status(200).json({ message: "Queue reordered" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

@@ -28,7 +28,7 @@ const getMatchDetails = async (req, res) => {
     params: { id: matchId },
   } = req;
   try {
-    const match = findOne({ _id: matchId });
+    const match = await Match.findOne({ _id: matchId });
     if (!match) {
       return res.status(404).json({ message: "Match not found" });
     }

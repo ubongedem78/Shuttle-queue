@@ -38,7 +38,7 @@ const deletePlayer = async (req, res) => {
     const {
       params: { id: playerId },
     } = req;
-    const player = await player.findOneAndDelete({ _id: playerId });
+    const player = await Player.findOneAndDelete({ _id: playerId });
     if (!player) {
       return res.status(404).json({ message: "Player not found" });
     }
