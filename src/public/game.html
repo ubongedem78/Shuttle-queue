@@ -35,17 +35,14 @@
       <div class="grid grid-cols-2 gap-4">
         <div class="border border-gray-300 p-4 rounded-md">
           <h3 class="text-lg font-semibold mb-2">Team 1</h3>
-          <div class="space-y-2" id="team1-players">
-            <!-- Placeholder for Team 1 players -->
-          </div>
+          <div class="space-y-2" id="team1-players"></div>
         </div>
         <div class="border border-gray-300 p-4 rounded-md">
           <h3 class="text-lg font-semibold mb-2">Team 2</h3>
-          <div class="space-y-2" id="team2-players">
-            <!-- Placeholder for Team 2 players -->
-          </div>
+          <div class="space-y-2" id="team2-players"></div>
         </div>
       </div>
+
       <div class="mt-4 flex items-center justify-center">
         <button
           class="score-button bg-red-500 text-white hover:bg-red-600 focus:outline-none rounded-md"
@@ -55,17 +52,16 @@
         </button>
         <span class="score-space-button"></span>
 
-        <span
-          class="font-semibold text-6xl cursor-pointer mx-2"
-          id="team1-score"
-          >0</span
-        >
+        <span class="font-semibold text-6xl cursor-pointer mx-2">
+          <span id="team1-score">0</span>
+        </span>
+
         <span class="score-space"></span>
-        <span
-          class="font-semibold text-6xl cursor-pointer mx-2"
-          id="team2-score"
-          >0</span
-        >
+
+        <span class="font-semibold text-6xl cursor-pointer mx-2">
+          <span id="team2-score">0</span>
+        </span>
+
         <span class="score-space-button"></span>
         <button
           class="score-button bg-red-500 text-white hover:bg-red-600 focus:outline-none rounded-md"
@@ -74,6 +70,7 @@
           -
         </button>
       </div>
+
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </main>
     <footer

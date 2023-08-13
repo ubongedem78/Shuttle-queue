@@ -1,6 +1,11 @@
 const Player = require("../models/player");
+const uuid = require("uuid");
 
-// Fetch the player queue or perform any game-related logic here
+const generateMatchId = () => {
+  return uuid.v4(); // Generate a new UUID match ID
+};
+
+// Fetch the player queue from the database
 const fetchPlayerQueue = async () => {
   try {
     const playerQueue = await Player.find().sort("_id");
@@ -22,38 +27,32 @@ const startGame = async (req, res) => {
         .json({ message: "Not enough players to start the game." });
     }
 
-    // Divide the players into two teams, for example, the first two players as Team 1 and the next two players as Team 2
-    const team1Players = playerQueue.slice(0, 2);
-    const team2Players = playerQueue.slice(2, 4);
+    // Determine the game mode based on the query parameter
+    const gameMode = req.query.gameMode; // Assuming the query parameter is named "gameMode"
 
-    // You can implement additional game-related logic here
-    // For example, update player stats, create a new match, etc.
+    let team1Players = [];
+    let team2Players = [];
 
-    res.status(200).json({ team1Players, team2Players });
+    if (gameMode === "doubles") {
+      // For doubles mode, the first pair in the queue is Team 1, and the second pair is Team 2
+      team1Players = playerQueue.slice(0, 2);
+      team2Players = playerQueue.slice(2, 4);
+    } else {
+      // For singles mode, the first player is Team 1, and the second player is Team 2
+      team1Players = [playerQueue[0]];
+      team2Players = [playerQueue[1]];
+    }
+
+    const matchId = generateMatchId(); // Generate a new match ID
+    // console.log(matchId);
+
+    res.status(200).json({ matchId, team1Players, team2Players });
   } catch (error) {
     console.error("Error starting the game:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-const updateScores = async (req, res) => {
-  try {
-    // Extract data from the request (assuming you're sending the team name and the score increment)
-    const { team, increment } = req.body;
-
-    // Implement your scoring logic here
-    // Update the scores for the specified team based on the increment value
-    // Example: Fetch the current scores from the database, increment the scores, and update them back in the database
-
-    // Return a response indicating successful score update
-    res.status(200).json({ message: "Score updated successfully" });
-  } catch (error) {
-    console.error("Error updating scores:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
-
 module.exports = {
   startGame,
-  updateScores,
 };

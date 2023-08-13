@@ -29,7 +29,9 @@ const addDoublesToQueue = async (req, res) => {
       name: `${player1}/${player2}`,
       gameMode: "doubles",
     }); // Set the game mode to "doubles"
+
     const newDoublesPair = await doublesPair.save();
+    console.log(newDoublesPair._id);
     res.status(201).json(newDoublesPair);
   } catch (error) {
     res.status(400).json({ message: error.message });

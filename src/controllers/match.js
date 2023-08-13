@@ -1,4 +1,8 @@
 const Match = require("../models/match");
+const mongoose = require("mongoose");
+const uuid = require("uuid");
+
+const { v4: uuidv4 } = require("uuid");
 
 //get list of matches
 const getAllMatches = async (req, res) => {
@@ -10,13 +14,18 @@ const getAllMatches = async (req, res) => {
   }
 };
 
-//create a match
+// Create a match with a unique matchId
 const createMatch = async (req, res) => {
   const players = req.body.players;
-  const match = new Match({ players });
+
+  // Generate a new UUID for the matchId
+  const matchId = uuidv4();
+
+  // Use the generated matchId when creating the match
+  const match = new Match({ _id: matchId, players });
   try {
     const newMatch = await match.save();
-    res.status(201).json({ newMatch });
+    res.status(201).json({ matchId: newMatch._id }); // Return the matchId in the response
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -60,22 +69,34 @@ const updateMatchDetails = async (req, res) => {
   }
 };
 
-//update scores
 const updateMatchScores = async (req, res) => {
   const {
-    params: { id: matchId },
-    body: { scores },
+    body: { matchId, team1Scores, team2Scores },
   } = req;
 
   try {
-    const match = await Match.findOneAndUpdate({ _id: matchId }, { scores });
+    const objectIdMatchId = new mongoose.Types.ObjectId(matchId);
+    const match = await Match.findOne({ _id: objectIdMatchId });
+
     if (!match) {
       return res.status(404).json({ message: "Match not found" });
     }
-    //update scores assuming scores is a map with playerIDs as keys and the scores as values
-    for (const playerId in scores) {
-      if (scores.hasOwnProperty(playerId)) {
-        match.scores.set(playerId, scores[playerId]);
+
+    // Update scores for team 1
+    if (team1Scores) {
+      for (const playerId in team1Scores) {
+        if (team1Scores.hasOwnProperty(playerId)) {
+          match.team1Scores.set(playerId, team1Scores[playerId]);
+        }
+      }
+    }
+
+    // Update scores for team 2
+    if (team2Scores) {
+      for (const playerId in team2Scores) {
+        if (team2Scores.hasOwnProperty(playerId)) {
+          match.team2Scores.set(playerId, team2Scores[playerId]);
+        }
       }
     }
 
