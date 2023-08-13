@@ -12,7 +12,7 @@ A web application designed for managing badminton games, player queues, and matc
 
 - Game Start: Start games by determining Team 1 and Team 2 based on the queue and game mode.
 
-- Deuce Condition: [Explain how the deuce condition is handled, or provide a link to relevant documentation if not included in the README]
+- Deuce Condition: Deuce condition at 20:20 where a team will only win when they have 2 points clear onwards.
 
 ## Installation
 
