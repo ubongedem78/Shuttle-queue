@@ -1,8 +1,0 @@
-/node_modules
-.env
-ignore.txt
-./src/public
-openapi.yaml
-.DS_Store
-../.DS_Store
-

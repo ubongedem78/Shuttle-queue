@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>SHUTTLEQ</title>
+    <link
+      rel="shortcut icon"
+      href="https://res.cloudinary.com/ubongedem78/image/upload/v1702358005/icons8-shuttlecock-smashingstocks-hand-drawn-black-32_dytjml.png"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container mx-auto mt-8">
+      <div id="loader" class="loader-overlay" style="display: none">
+        <div class="loadingio-spinner-ball-uogk7q6uhbn">
+          <div class="ldio-gzqtuwybk0u">
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div id="userGreeting" class="text-lg font-semibold mb-2"></div>
+      <a href="#" id="logoutButton" class="text-blue-500 underline">Logout</a>
+      <h1 class="text-3xl font-semibold mb-6">SHUTTLEQ</h1>
+      <label for="courtSelect" class="text-lg mb-2">Select Court:</label>
+      <select
+        id="courtSelect"
+        name="courtSelect"
+        class="form-input mb-4"
+      ></select>
+
+      <div id="queueList" class="grid grid-cols-1 gap-4"></div>
+      <button id="createGame" class="btn btn-blue mt-4">Create Game</button>
+      <button id="addPlayer" class="btn btn-green mt-2">Add Player</button>
+      <button id="addCourt" class="btn btn-yellow mt-2">
+        Add/Delete Court
+      </button>
+      <button id="endSession" class="btn btn-red mt-2">End Session</button>
+    </div>
+
+    <script src="home.js"></script>
+  </body>
+</html>

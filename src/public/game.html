@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>SHUTTLEQ</title>
+    <link
+      rel="shortcut icon"
+      href="https://res.cloudinary.com/ubongedem78/image/upload/v1702358005/icons8-shuttlecock-smashingstocks-hand-drawn-black-32_dytjml.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body class="font-sans bg-gray-100 min-h-screen">
+    <div id="loader" class="loader-overlay" style="display: none">
+      <div class="loadingio-spinner-ball-uogk7q6uhbn">
+        <div class="ldio-gzqtuwybk0u">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <header class="bg-gray-800 text-white py-4 text-center">
+      <div class="text-3xl font-bold">ShuttleQ</div>
+    </header>
+    <main class="bg-white my-5 p-4 text-center rounded-md shadow-md">
+      <h2 class="text-2xl font-semibold mb-4">Match</h2>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="border border-gray-300 p-4 rounded-md">
+          <div class="space-y-2" id="team1-players"></div>
+        </div>
+        <div class="border border-gray-300 p-4 rounded-md">
+          <div class="space-y-2" id="team2-players"></div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center">
+        <button
+          class="score-button bg-red-500 text-white hover:bg-red-600 focus:outline-none rounded-md"
+          id="decrement-score-team1"
+        >
+          -
+        </button>
+        <span class="score-space-button"></span>
+
+        <span class="font-semibold text-4xl cursor-pointer mx-2">
+          <span id="team1-score">0</span>
+        </span>
+
+        <span class="score-space"></span>
+
+        <span class="font-semibold text-4xl cursor-pointer mx-2">
+          <span id="team2-score">0</span>
+        </span>
+
+        <span class="score-space-button"></span>
+        <button
+          class="score-button bg-red-500 text-white hover:bg-red-600 focus:outline-none rounded-md"
+          id="decrement-score-team2"
+        >
+          -
+        </button>
+      </div>
+
+      <button class="bg-red-500 text-white px-4 py-2 rounded mt-6" id="endGame">
+        End Game
+      </button>
+
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded mt-6"
+        id="back-button"
+      >
+        Back to Queue
+      </button>
+
+      <div
+        id="deuce-message"
+        style="
+          display: none;
+          color: rgb(255, 47, 0);
+          font-size: 20px;
+          font-weight: bold;
+        "
+      ></div>
+    </main>
+
+    <footer
+      class="bg-gray-800 text-white text-xs text-center py-3 bottom-0 w-full absolute"
+    >
+      <p>&copy; ShuttleQ</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
