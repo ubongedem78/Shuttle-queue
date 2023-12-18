@@ -1,5 +1,8 @@
 # ShuttleQ - A management application for Badminton lovers.
 
+## N/B
+The main repository this was developed at is : https://github.com/ubongedem78/ShuttleQ
+
 ## Overview
 
 ShuttleQ is a web application designed to manage the game of badminton. Badminton is a popular racket sport played by either two opposing players (singles) or two opposing pairs (doubles) on a rectangular court divided by a net. The objective is to score points by hitting a shuttlecock over the net into the opponent's court. This project aims to simplify the organization and management of badminton games, including scoring, player pairing, and queue management.
@@ -112,3 +115,5 @@ ShuttleQ returns the following status codes in its API responses:
 ## Contributing
 
 Pull requests are very welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
